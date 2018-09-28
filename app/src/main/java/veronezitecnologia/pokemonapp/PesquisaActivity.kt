@@ -55,6 +55,8 @@ class PesquisaActivity : AppCompatActivity() {
                                          .error(R.drawable.download)
                                          .into(ivPokemon)
                              } else {
+                                 tvPokemon.text = "Pokemon não encontrado"
+                                 ivPokemon.setImageResource(R.drawable.download)
                                  Toast.makeText(this@PesquisaActivity,
                                          "Deu ruim",
                                          Toast.LENGTH_LONG).show()
