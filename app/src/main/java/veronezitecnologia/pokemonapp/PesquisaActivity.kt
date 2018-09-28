@@ -12,6 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import veronezitecnologia.pokemonapp.api.PokemonAPI
 import veronezitecnologia.pokemonapp.model.Pokemon
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 
 
@@ -48,6 +49,11 @@ class PesquisaActivity : AppCompatActivity() {
                              if(response?.isSuccessful == true) {
                                  val pokemon = response.body()
                                  tvPokemon.text = pokemon?.nome
+                                 Picasso.get()
+                                         .load(pokemon?.sprites?.frontDefault)
+                                         .placeholder(R.drawable.placeholder)
+                                         .error(R.drawable.download)
+                                         .into(ivPokemon)
                              } else {
                                  Toast.makeText(this@PesquisaActivity,
                                          "Deu ruim",
